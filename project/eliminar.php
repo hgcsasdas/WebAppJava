@@ -5,7 +5,7 @@ $controller = new controller();
 if(isset($_GET) && !empty($_GET)){
     if ($controller->eliminarEnDB("classes",$_GET)) {
         echo '<div><script type="module">correctRegister()</script></div>';
-       header("Location: modulos.php");
+       header("Location: cursos.php");
     } else {
         echo '<div><script type="module">failedRegister()</script></div>';
        header("Location: classCreator.php?id=" . $_GET['id_modulo'] . "&c=" . $_GET['codigo_clase'], false);

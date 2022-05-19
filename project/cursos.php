@@ -53,7 +53,7 @@ if (isset($_POST) && !empty($_POST)) {
       
         <div class="item-cursos">
             <div class="item-cursos-img">
-                <a href=""><img src="Imgs/modulos/2bachillerato.jpg" alt=""></a>
+                <a href=""><img src="Imgs/modulos/2bach.jpg" alt=""></a>
             </div>
             <div class="item-cursos-url">
                 <a href="#">2 bach mates ciencias</a>
@@ -61,7 +61,7 @@ if (isset($_POST) && !empty($_POST)) {
         </div>
         <div class="item-cursos">
             <div class="item-cursos-img">
-                <a href=""><img src="Imgs/modulos/2bachillerato.jpg" alt=""></a>
+                <a href=""><img src="Imgs/modulos/2bach.jpg" alt=""></a>
             </div>
             <div class="item-cursos-url">
                 <a href="#">2 bach mates letras</a>
@@ -69,7 +69,7 @@ if (isset($_POST) && !empty($_POST)) {
         </div>
         <div class="item-cursos">
             <div class="item-cursos-img">
-                <a href=""><img src="Imgs/modulos/2bachillerato.jpg" alt=""></a>
+                <a href=""><img src="Imgs/modulos/2bach.jpg" alt=""></a>
             </div>
             <div class="item-cursos-url">
                 <a href="#">Carrera ADE</a>

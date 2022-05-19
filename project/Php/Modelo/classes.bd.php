@@ -64,7 +64,7 @@ class BdClasses extends Bd {
                         try {
                             $urlFragmentos = explode("&", explode("=", $valor)[1]);
                             $valor = "https://www.youtube.com/embed/" . $urlFragmentos[0];
-                        } catch (TypeError $te) {
+                        } catch (TypeError $te) { //NO FUNCIONA
                             $valor = "https://www.youtube.com/embed/xoidoibP1Qs";
                         }
                     }
@@ -256,4 +256,3 @@ class BdClasses extends Bd {
             }
 
 }
-?>

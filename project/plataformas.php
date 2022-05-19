@@ -6,7 +6,7 @@
 <div class="contender">
     <div class="yt">
         <div class="izq">
-            <a href="#"><img src="Imgs/1366_521.jpg" alt=""></a>
+            <a href="#"><img src="Imgs/redesSociales/Youtube.jpg" alt="Youtube"></a>
         </div>
         <div class="der">
             <h2>Nuestro YouTube</h2>
@@ -18,12 +18,12 @@
             <p>Aqui empezaremos a subir videos explicativos, retos diarios y resolveremos vuestras dudas al insatnte.</p>
         </div>
         <div class="der">
-            <a href="https://www.instagram.com/indomath_clases/"><img src="Imgs/1200px-Instagram-Icon.png" alt=""></a>
+            <a href="https://www.instagram.com/indomath_clases/"><img src="Imgs/redesSociales/Instagram.png" alt="Instagram"></a>
         </div>
     </div>
     <div class="yt">
         <div class="izq">
-            <a href="#"><img class="ft-twich" src="Imgs/unnamed.png" alt=""></a>
+            <a href="#"><img class="ft-twich" src="Imgs/redesSociales/Twitch.png" alt="Twitch"></a>
         </div>
         <div class="der">
             <h2>Nuestro Twitch</h2>
