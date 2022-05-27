@@ -12,7 +12,7 @@ require "php/Modelo/classes.bd.php";
 require "php/Controlador/Controller.php";
 ?>
 <?php
-//poner modulos en mayusculas
+
 $controller = new controller();
 
 $modulos =  $controller->leerEnDB("modules", "");
@@ -44,7 +44,7 @@ if(isset($_GET) && !empty($_GET)){
 
         echo "<script type='module'>llenarDatos(" . $_GET['c'] . ", " . $datos . ");</script>"; //Comprobar que la clase exista
     } catch (Exception $e) {
-        header("Location: modulos.php"); //redireccionar
+        header("Location: cursos.php"); //redireccionar
         echo "Debe crear una clase primero";
     }
 }

@@ -1,4 +1,4 @@
-<!doctype html>
+    <!doctype html>
 <html lang="es">
 <link rel="stylesheet" href="Css/crearClase.css">
 <script src="https://cdn.tiny.cloud/1/xdvnk6dzaz519bjr5uc1teocywbt1optp7hlrn0rodbhump8/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
