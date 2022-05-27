@@ -37,8 +37,13 @@ if (isset($_POST) && !empty($_POST)){
     }
 
 ?>
-<body>
+<body onload="cambiaForm()">
+<script>
+    function cambiaForm(){
+        document.getElementById("rellenar").action = '<?php $_SERVER ["PHP_SELF"]?>';
 
+    }
+</script>
 <script class="sweetAlertFunctions">
     function correctRegister() {
         Swal.fire({
@@ -76,7 +81,7 @@ if (isset($_POST) && !empty($_POST)){
 <section>
 
     <div class="container-formulario-anadir">
-        <form class="rellenar" action="<?php $_SERVER['PHP_SELF']?>" method="post" autocomplete="off" onsubmit="alert(examen.innerText)" enctype="multipart/form-data">
+        <form class="rellenar" action="" method="post" autocomplete="off" onsubmit="alert(examen.innerText)" enctype="multipart/form-data">
             <ul class="listaFormulario">
                 <li><label for="titulo"> Título del curso:</label><input name="titulo" type="text" required></li>
                 <li><label for="foto"> Foto del curso:</label><input name="foto" type="file" required></li>

@@ -29,9 +29,10 @@
          $conexion = $this->establecerConexion($tabla);
          if ($tabla == "users") {
              $exito = $conexion->consultarUsuarios($datos);
-         }elseif ($tabla == "classes") {
-             $exito = $conexion->consultarClases($datos);
-         }elseif ($tabla == "classes2") {
+         }//elseif ($tabla == "classes") {
+             //$exito = $conexion->consultarClases($datos);
+         //}
+         elseif ($tabla == "classes2") {
              $exito = $conexion->listarClases($datos);
          }elseif ($tabla == "modules"){
              $exito = $conexion->listarCursos();

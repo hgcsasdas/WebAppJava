@@ -16,21 +16,15 @@ if (isset($_GET) && !empty($_GET)){
     $controller = new controller();
     $clases =  $controller->leerEnDB("classes2", $_GET);
     echo "<script type='module'>imprimirClases(".$clases.")</script>";
-    echo "<script type='module'>mostrarClase(".$clases.", ".$_GET['c'].")</script>";
+    echo "<script type='module'>mostrarClase(".$clases.")</script>";
 
-    $exito =  $controller->leerEnDB("classes", $_GET);
-    foreach ($exito as $item=>$value){
-        $$item = $value;
-    }
-    $tituloModulo = $titulo;
-    $tituloClase = $nombre;
-    $numLecciones = $numLecciones;
-    $duracionLeccion = $cduracion;
-    $duracionExamen = $eduracion;
-    $duracionTotal = $duracionLeccion + $duracionExamen;
-    $fuenteVideo = $video;
-    $descripcionClase = $contenido;
-    $id=$id_modulo;
+//    $exito =  $controller->leerEnDB("classes", $_GET);
+ //   $datos = json_encode($exito);
+
+   // $descripcionClase = $contenido;
+    //$id=$id_modulo;
+
+    //echo "<script type='module'>llenarDatosClase(". $datos . ")</script>";
 
 
 }
@@ -38,7 +32,6 @@ if (isset($_GET) && !empty($_GET)){
 
 <script>
     function imprimirClases(clases){
-        console.log(clases);
         let lecciones = document.querySelector(".listaLecciones");
         let leccion ="";
         for (let i =0; i<clases.length; i++) {
@@ -47,43 +40,43 @@ if (isset($_GET) && !empty($_GET)){
         lecciones.innerHTML = leccion;
     }
 
-    function mostrarClase(clases, id){
-        let indiceClase = 0;
-        let found = false;
-        while((indiceClase < clases.length) && !found){
-            if(clases[indiceClase]['codigo_clase'] == id){
-                found = true;
-            }else{
-                indiceClase++;
-            }
-}
+    function mostrarClase(datos){
+        datos = datos[0];
+        let tituloModulo = document.getElementsByClassName('tituloModulo')[0];
+        tituloModulo.innerHTML = datos['titulo'];
+        let tituloClase = document.getElementsByClassName('tituloClase')[0];
+        tituloClase.innerHTML = datos['nombre'];
+        let resumenTema = document.getElementById('resumenTema');
+        resumenTema.setAttribute('href', "classAssetIntroduction.php?id="+datos['id_modulo']);
+        let lecciones = document.getElementById('leccionesNum');
+        lecciones.innerHTML = datos['numLecciones'];
+        let video = document.getElementById('video');
+        video.src = datos['video'];
+        let module = document.getElementById('module');
+        module.setAttribute('href', "examAsset.php?id="+datos['id_modulo']);
+        document.querySelector(".contenidoClase").innerHTML = "<p><br>"+datos['contenido']+"</p><br><a class= 'editarClase' href='classCreator.php?id="+datos['id_modulo']+"&c="+datos['codigo_clase']+"' >Editar Clase</a>";
 
-        let clase = document.querySelector("iframe");
-        clase.src = clases[indiceClase]['video'];
-        document.querySelector(".tituloClase").innerHTML = clases[indiceClase]['nombre'];
-       document.querySelector(".contenidoClase").innerHTML = "<p><br>"+clases[indiceClase]['contenido']+"</p><br><a class= 'editarClase' href='classCreator.php?id="+clases[indiceClase]['id_modulo']+"&c="+clases[indiceClase]['codigo_clase']+"' >Editar Clase</a>";
 
     }
-
 </script>
 <main>
-    <h5 class="tituloModulo"><?php echo $tituloModulo ?></h5>
-    <h1 class="tituloClase"><?php echo $tituloClase ?></h1>
+    <h5 class="tituloModulo"></h5>
+    <h1 class="tituloClase"></h1>
     <aside class="claseContenido">
         <ul class="listaClases">
-            <li><a href="<?php echo 'classAssetIntroduction.php?id='.$id?>">Resumen del tema</a></li>
-            <li id="lecciones">Lecciones <strong><?php echo $numLecciones?></strong></li>
+            <li><a id="resumenTema" href="#">Resumen del tema</a></li>
+            <li id="lecciones">Lecciones <strong id="leccionesNum"></strong></li>
             <ul class="listaLecciones"></ul>
         </ul>
     </aside>
     <section class="claseContenido">
         <div id="reproductor">
-            <iframe width="100%" height="100%" src="<?php echo $fuenteVideo?>"
+            <iframe id="video" width="100%" height="100%" src=""
                     title="YouTube video player" frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen></iframe>
         </div>
-        <a href="<?php echo 'examAsset.php?id='.$id?>"><button id="testUnidad">Comprueba tus conocimientos</button></a>
+        <a id="module" href="#"><button id="testUnidad">Comprueba tus conocimientos</button></a>
         <div class="contenidoClase">
         </div>
     </section>

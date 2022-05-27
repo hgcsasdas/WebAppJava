@@ -6,16 +6,17 @@ class BdClasses extends Bd {
         parent::__construct();
     }
 
+    /*
     public function consultarClases($datos){
         $tabla = "classes";
 
         $codigoModulo = $datos['id'];
-        $sql  = 'select m.id_modulo, upper(m.titulo) as titulo, c.nombre, m.resumen, (select count(*) from ' . $tabla . ' as c join modules m on c.codigo_modulo = '.$codigoModulo.' where c.codigo_modulo = m.id_modulo) as "numLecciones", c.duracion as cduracion, e.duracion as eduracion, e.contenido as examenURL, c.video, c.contenido from ' . $tabla . ' as c join modules m on c.codigo_modulo = m.id_modulo join exam e on e.cod_examen = c.codigo_examen where codigo_modulo=' . $codigoModulo ;
+        $sql  = 'select c.codigo_clase, m.id_modulo, upper(m.titulo) as titulo, c.nombre, m.resumen, (select count(*) from ' . $tabla . ' as c join modules m on c.codigo_modulo = '.$codigoModulo.' where c.codigo_modulo = m.id_modulo) as "numLecciones", c.duracion as cduracion, c.codigo_examen, e.duracion as eduracion, e.contenido as examenURL, c.video, c.contenido from ' . $tabla . ' as c join modules m on c.codigo_modulo = m.id_modulo join exam e on e.cod_examen = c.codigo_examen where codigo_modulo=' . $codigoModulo ;
         $data = $this->conexion->query($sql);
         $dataarray = (mysqli_fetch_assoc($data));
-        return $dataarray;
+        return json_encode($dataarray);
     }
-
+*/
 
     public function listarClases($datos){
         $tabla = "classes";
@@ -31,6 +32,7 @@ class BdClasses extends Bd {
         return $lecciones;
 
     }
+
     public function buscarSiExisteClase($datos){
         $tabla = "classes";
         $codigoModulo = $datos['id_modulo'];
