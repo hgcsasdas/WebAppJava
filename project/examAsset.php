@@ -15,12 +15,12 @@ if (isset($_GET) && !empty($_GET)){
 
     $controller = new controller();
 
-    $exito =  $controller->leerEnDB("classes", $_GET);
+   // $exito =  $controller->leerEnDB("classes", $_GET);
     $clases =  $controller->leerEnDB("classes2", $_GET);
     echo "<script type='module'>imprimirClases(".$clases.")</script>";
     echo "<script type='module'>mostrarClase(".$clases.")</script>";
 
-
+/*
     foreach ($exito as $item=>$value){
         $$item = $value;
     }
@@ -35,13 +35,13 @@ if (isset($_GET) && !empty($_GET)){
     $descripcionClase = $contenido;
     $id=$id_modulo;
     $examen=$examenURL;
-
+*/
 }
 ?>
 
 <script>
     function imprimirClases(clases){
-        console.log(clases);
+       // console.log(clases);
         let lecciones = document.querySelector(".listaLecciones");
         let leccion ="";
         for (let i =0; i<clases.length; i++) {
@@ -50,36 +50,38 @@ if (isset($_GET) && !empty($_GET)){
         lecciones.innerHTML = leccion;
     }
 
-    function mostrarClase(clases, id){
-        let indiceClase = 0;
-        let found = false;
-        while((indiceClase < clases.length) && !found){
-            if(clases[indiceClase]['codigo_clase'] == id){
-                found = true;
-            }else{
-                indiceClase++;
-            }
-        }
+    function mostrarClase(datos){
+        datos = datos[0];
+        let tituloModulo = document.getElementsByClassName('tituloModulo')[0];
+        tituloModulo.innerHTML = datos['titulo'];
+        let tituloClase = document.getElementsByClassName('tituloClase')[0];
+        tituloClase.innerHTML = datos['nombre'];
+        let resumenTema = document.getElementById('resumenTema');
+        resumenTema.setAttribute('href', "classAssetIntroduction.php?id="+datos['id_modulo']);
+        let lecciones = document.getElementById('leccionesNum');
+        lecciones.innerHTML = datos['numLecciones'];
+        let video = document.getElementById('video');
+        video.src = datos['video'];
+        let module = document.getElementById('module');
+        module.setAttribute('href', "examAsset.php?id="+datos['id_modulo']);
+        document.querySelector(".contenidoClase").innerHTML = "<p>"+datos['contenido']+"</p>";
 
-        let clase = document.querySelector("iframe");
-        clase.src = clases[indiceClase]['video'];
-        document.querySelector(".contenidoClase").innerHTML = "<p>"+clases[indiceClase]['contenido']+"</p>";
+
     }
-
 </script>
 <main>
-    <h5 class="tituloModulo"><?php echo $tituloModulo ?></h5>
-    <h1 class="tituloClase"><?php echo $tituloClase ?></h1>
+    <h5 class="tituloModulo"><?php //$tituloModulo ?></h5>
+    <h1 class="tituloClase"><?php //$tituloClase ?></h1>
     <aside class="claseContenido">
         <ul class="listaClases">
-            <li><a href="<?php echo 'classAssetIntroduction.php?id='.$id?>">Resumen del tema</a></li>
-            <li id="lecciones">Lecciones <strong><?php echo $numLecciones?></strong></li>
+            <li><a href="<?php // 'classAssetIntroduction.php?id='.$id?>">Resumen del tema</a></li>
+            <li id="lecciones">Lecciones <strong><?php // $numLecciones?></strong></li>
             <ul class="listaLecciones"></ul>
         </ul>
     </aside>
     <section class="claseContenido">
         <div class="examenContendor">
-            <?php echo $examen?>
+            <?php //echo $examen?>
         </div>
     </section>
 </main>

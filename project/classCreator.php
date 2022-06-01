@@ -153,6 +153,10 @@ if(isset($_GET) && !empty($_GET)){
     });
 </script>
 <script class="mostrarModulos">
+    function cambiaForm(){
+        document.getElementById("rellenar").action = '<?php $_SERVER ["PHP_SELF"]?>';
+
+    }
     //import {mostrarModulos} from "./js/mostrarModulos.js"; intentar en otros modulos
     //mostrarModulos();
     function mostrarModulos(cursos){
@@ -171,14 +175,16 @@ if(isset($_GET) && !empty($_GET)){
             option.appendChild(personalizeOption);
             modulos.appendChild(option);
         }
+        cambiaForm();
     }
 </script>
 
 <section>
 
     <div class="container-formulario-anadir">
-        <form class="rellenar" action="<?php $_SERVER['PHP_SELF']?>" method="post" autocomplete="off">
+        <form class="rellenar" action=""  method="post" autocomplete="off">
             <ul class="listaFormulario">
+                <!---<input type="hidden" value="" name="id">-->
                 <li><label for="nombre"> Título de la clase:</label><input name="nombre" type="text" required></li>
                 <li><label for="codigo_modulo"> Módulo de la clase:</label><select name="codigo_modulo" id="modulo" required></select></li>
                 <li><label for="video"> Link del vídeo:</label><input name="video" type="text" required></li>

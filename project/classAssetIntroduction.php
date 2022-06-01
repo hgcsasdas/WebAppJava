@@ -15,21 +15,30 @@ if (isset($_GET) && !empty($_GET)){
 
     $controller = new controller();
 
-    $exito =  $controller->leerEnDB("classes", $_GET);
+   // $exito =  $controller->leerEnDB("classes", $_GET);
     $clases =  $controller->leerEnDB("classes2", $_GET);
     echo "<script type='module'>imprimirClases(".$clases.")</script>";
     echo "<script type='module'>mostrarClase(".$clases.")</script>";
 
-    foreach ($exito as $item=>$value){
+   /* foreach ($exito as $item=>$value){
         $$item = $value;
-    }
-    $numLecciones = $numLecciones;
-    $id=$id_modulo;
+    }*/
+    //$numLecciones = $numLecciones;
+    //$id=$id_modulo;
 
 }
   ?>
 
 <script>
+    function mostrarClase(datos){
+        datos = datos[0];
+        let numLecciones = document.getElementById('lecciones1');
+        numLecciones.innerHTML = datos['leccion'];
+        let resumenTema = document.getElementById('resumenTema');
+        resumenTema.setAttribute('href', "classAssetIntroduction.php?id="+datos['id_modulo']);
+        document.querySelector(".tituloModulo").innerHTML = datos['titulo'];
+        document.querySelector("#resumen").innerHTML = "<p>"+datos['resumen']+"</p>";
+    }
     function imprimirClases(clases){
         let lecciones = document.querySelector(".listaLecciones");
         let leccion ="";
@@ -38,19 +47,19 @@ if (isset($_GET) && !empty($_GET)){
         }
         lecciones.innerHTML = leccion;
     }
-    function mostrarClase(modulo){
+    /*function mostrarClase(modulo){
         modulo = modulo[0];
         document.querySelector(".tituloModulo").innerHTML = modulo['titulo'];
         document.querySelector("#resumen").innerHTML = "<p>"+modulo['resumen']+"</p>";
     }
-
+*/
 </script>
 <main>
     <h1 class="tituloModulo"></h1>
     <aside class="claseContenido">
         <ul class="listaClases">
-            <li><a href="<?php echo 'classAssetIntroduction.php?id='.$id?>">Resumen del tema</a></li>
-            <li id="lecciones">Lecciones <strong><?php echo $numLecciones?></strong></li>
+            <li><a id="resumenTema" href="#">Resumen del tema</a></li>
+            <li id="lecciones">Lecciones <strong id="lecciones1"></strong></li>
             <ul class="listaLecciones"></ul>
         </ul>
     </aside>
