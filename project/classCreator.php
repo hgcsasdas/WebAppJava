@@ -57,7 +57,7 @@ if(isset($_GET) && !empty($_GET)){
 
         let indiceClase = 0;
         for (let i = 0; i < clase.length; i++) {
-            if (clase[i]['codigo_clase'] == id) {
+            if (clase[i]['codigo_clase'] === id) {
                 indiceClase = i;
             }
         }
@@ -67,28 +67,26 @@ if(isset($_GET) && !empty($_GET)){
 
         for (let i in leccion) {
             leccionArray.push(leccion[i]);
-            if (i == 'id_modulo') {
+            if (i === 'id_modulo') {
                 identificadores['id_modulo']=leccion[i];
-            } else if (i == 'codigo_clase') {
+            } else if (i === 'codigo_clase') {
                 identificadores['codigo_clase']=leccion[i];
-            } else if (i == 'codigo_examen') {
+            } else if (i === 'codigo_examen') {
                 identificadores['codigo_examen']=leccion[i];
             }
-
-
         }
 
         let campos = document.getElementsByTagName("input");
         let modulo = document.getElementsByTagName("select");
         let desc = document.getElementsByTagName("textarea")
 
-        campos[0].value =leccionArray[3];
-        modulo[0].value =leccionArray[1];
-        campos[1].value =leccionArray[10];
-        campos[2].value =leccionArray[5];
-        campos[3].value =leccionArray[9];
-        campos[4].value =leccionArray[8];
-        desc[0].value =leccionArray[11];
+        campos[0].value = leccionArray[3];
+        modulo[0].value = leccionArray[1];
+        campos[1].value = leccionArray[10];
+        campos[2].value = leccionArray[5];
+        campos[3].value = leccionArray[9];
+        campos[4].value = leccionArray[8];
+        desc[0].value = leccionArray[11];
 
         let eliminarLista = document.createElement("li");
         let eliminarOption = document.createElement("a");

@@ -25,7 +25,7 @@ if (isset($_POST) && !empty($_POST)) {
     function mostrarModulos(cursos) {
         let modulos = "";
         for (let i = 0; i < cursos.length; i++) {
-            modulos += '<div class="item-cursos" ><div class="item-cursos-img"><a href="classAssetIntroduction.php?id=' + cursos[i]["id_modulo"] + '" ><img src="'+cursos[i]["foto"]+'" alt="'+cursos[i]["titulo"]+'"></a></div><div class="item-cursos-url"><a href="classAssetIntroduction.php?id=' + cursos[i]["id_modulo"] + '">' + cursos[i]["titulo"] + '</a></div><div class="item-cursos-editarCursosa"><a href="cursosEdit.php?id=' + cursos[i]["id_modulo"] + '">Editar</a></div></div>';
+            modulos += '<div class="item-cursos" ><div class="item-cursos-img"><a href="classAssetIntroduction.php?id=' + cursos[i]["id_modulo"] + '" ><img src="'+cursos[i]["foto"]+'" alt="'+cursos[i]["titulo"]+'"></a></div><div class="item-cursos-url"><a href="classAssetIntroduction.php?id=' + cursos[i]["id_modulo"] + '">' + cursos[i]["titulo"] + '</a></div><div class="item-cursos-editarCursosa"><a href="moduleCreator.php?id=' + cursos[i]["id_modulo"] + '">Editar</a></div></div>';
         }
         document.querySelector(".container-cursos").innerHTML = modulos;
     }

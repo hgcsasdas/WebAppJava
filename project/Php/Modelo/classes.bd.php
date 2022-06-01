@@ -39,6 +39,14 @@ class BdClasses extends Bd {
         $data = $this->conexion->query($sql);
         return $data->num_rows;
     }
+    public function buscarSiExisteModulo($datos){
+        $tabla = "modules";
+        $codigoModulo = $datos['id_modulo'];
+        $codigoClase = $datos['codigo_clase'];
+        $sql  = 'select * from ' . $tabla . '  where ' ;
+        $data = $this->conexion->query($sql);
+        return $data->num_rows;
+    }
 
     public function insertarClases($datos){
 
@@ -242,7 +250,6 @@ class BdClasses extends Bd {
             $resultado2 = $this->conexion->query($sql);
 
             $resultadoListado = $this->buscarSiExisteClase($datos);
-
             if ($resultado < 0 || $resultado2 < 0 || $resultadoListado == true) {
                 $registroExitoso = 0;
             } else {
@@ -254,5 +261,30 @@ class BdClasses extends Bd {
 
 
             }
+    function eliminarCursos($datos){
+
+        $resultadoListado = true;
+        $registroExitoso = 1;
+
+        $sql = "delete from classes where codigo_modulo = " . implode($datos);//. " and codigo_clase = " . $datos['codigo_clase'];
+        $resultado1 = $this->conexion->query($sql);
+        $sql = "delete from exam where cod_examen = " . implode($datos);
+        $resultado2 = $this->conexion->query($sql);
+        $sql = "delete from modules where id_modulo = " . implode($datos);
+        $resultado3 = $this->conexion->query($sql);
+
+        if ($resultado1 < 0 || $resultado2 < 0 || $resultado3 < 0 || $resultadoListado == true) {
+            $registroExitoso = 0;
+
+        } else {
+            $registroExitoso = 1;
+        }
+
+        return $registroExitoso;
+
+
+    }
+
 
 }
+
