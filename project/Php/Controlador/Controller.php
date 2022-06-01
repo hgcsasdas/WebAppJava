@@ -63,7 +63,7 @@
              $exito = $conexion->eliminarClases($datos);
          }elseif ($tabla == "modulos") {
              $exito = $conexion->eliminarCursos($datos);
-         }
+             }
          return $exito;
      }
 

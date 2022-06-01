@@ -108,6 +108,7 @@ body {
     color: #555555;
 }
 
+/* cursos  */
 
 .container-cursos {
     width: 90%;
@@ -115,6 +116,7 @@ body {
     display: flex;
     flex-direction: column;
 }
+
 
 .item-cursos {
     width: 100%;
@@ -124,17 +126,30 @@ body {
     width: 100%;
 }
 
-.item-cursos-url a {
+.item-cursos-url a, .item-cursos-editarCursosa a{
     width: 100%;
     background: #777777;
     float: left;
     margin-top: -2%;
     text-align: center;
+    padding: 0.5rem;
+}
+.item-cursos-editarCursosa a{
+    background-color: white;
+    color: orangered;
 }
 
 .container-cursos {
     padding-top: 2rem;
     padding-bottom: 2rem;
+}
+.editarCursosa {
+    width: 100%;
+}
+.editarCursosa a{
+    background-color: grey;
+    color: black;
+    margin: auto;
 }
 
 /* APARTADO NOSOTROS */
