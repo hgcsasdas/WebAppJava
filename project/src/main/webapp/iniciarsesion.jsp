@@ -1,12 +1,11 @@
-<!---
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="https://js.hcaptcha.com/1/api.js" async defer></script>
 
+<!---
 <?php
 require "php/modelo/Usuario.php";
 require "php/modelo/users.bd.php";
 require "php/Controlador/Controller.php";
 ?>
+
 <?php
 if(isset($_POST) && !empty($_POST)){
     $user = new Usuario();
@@ -27,11 +26,17 @@ if($controlador->verificarCaptcha($_POST['h-captcha-response'])) {
 ?>
 -->
 
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="es">
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://js.hcaptcha.com/1/api.js" async defer></script>
 <%@include file="Includes/head.jsp" %>
 <%@include file="Includes/nav.jsp" %>
 <script>
+    function cambiaForm(){
+        document.getElementById("rellenarDatos").action = 'IniciarSesion';
+
+    }
     function verificarDatos() {
 
         let formulario = document.formDatosPersonales;
@@ -99,8 +104,7 @@ if($controlador->verificarCaptcha($_POST['h-captcha-response'])) {
     }
 
 </script>
-<body>
-<?php include "Includes/nav.php"?>
+<body onload="cambiaForm();">
 <div class="contenedor">
     <div class="logoIni">
         <img src="Imgs/logo.jpeg" alt="">
@@ -112,12 +116,12 @@ if($controlador->verificarCaptcha($_POST['h-captcha-response'])) {
 
     <div class="formulario">
 
-        <form name="formDatosPersonales" action="CrearSession" target="" onsubmit="return verificarDatos();" method="post" enctype="application/x-www-form-urlencoded">
+        <form id="rellenarDatos" name="formDatosPersonales" action="#" target="" onsubmit="return verificarDatos();" method="post" enctype="application/x-www-form-urlencoded">
 
             <label for="mail">Correo electrónico: </label><input name="mail" id="mail" required type="email" placeholder="Mail">
             <label for="contrasena">Contraseña: </label><input name="contrasena" id="contrasena" required type="password" minlength="8" placeholder="Contraseña">
             <div id="errorCaptcha"></div>
-            <div class="h-captcha" id="captcha" data-sitekey="eb2c600f-ee5c-40b1-a0cb-26e2a0c4da53" ></div>
+            <div class="h-captcha" id="captcha" data-sitekey="eb2c600f-ee5c-40b1-a0cb-26e2a0c4da53"></div>
             <input type="submit" value="Enviar datos"/>
 
         </form>

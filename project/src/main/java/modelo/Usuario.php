@@ -57,7 +57,7 @@ public function imprimeFila() {
     $txt .= "<td>" . $this->nombre . "</td>";
     $txt .= "<td>" . $this->participantes . "</td>";
     $txt .= "<td>" . $this->nota . "</td>";
-    $txt .= "<td><a href='altaElementos.php?id=" . $this->id . "'>Editar</a></td>";
+    $txt .= "<td><a href='altaElementos.jsp?id=" . $this->id . "'>Editar</a></td>";
 
     $txt .= "</tr>";
 
