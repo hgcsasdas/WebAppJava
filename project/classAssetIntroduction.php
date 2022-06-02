@@ -54,6 +54,7 @@ if (isset($_GET) && !empty($_GET)){
     }
 */
 </script>
+<body>
 <main>
     <h1 class="tituloModulo"></h1>
     <aside class="claseContenido">

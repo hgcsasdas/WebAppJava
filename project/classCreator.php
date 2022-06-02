@@ -154,8 +154,7 @@ if(isset($_GET) && !empty($_GET)){
 </script>
 <script class="mostrarModulos">
     function cambiaForm(){
-        document.getElementById("rellenar").action = '<?php $_SERVER ["PHP_SELF"]?>';
-
+        document.getElementById("rellenarDatos").action = '<?php $_SERVER ["PHP_SELF"]?>';
     }
     //import {mostrarModulos} from "./js/mostrarModulos.js"; intentar en otros modulos
     //mostrarModulos();
@@ -182,17 +181,17 @@ if(isset($_GET) && !empty($_GET)){
 <section>
 
     <div class="container-formulario-anadir">
-        <form class="rellenar" action=""  method="post" autocomplete="off">
+        <form id="rellenarDatos" class="rellenar" action="#"  method="post" autocomplete="off">
             <ul class="listaFormulario">
                 <!---<input type="hidden" value="" name="id">-->
-                <li><label for="nombre"> Título de la clase:</label><input name="nombre" type="text" required></li>
-                <li><label for="codigo_modulo"> Módulo de la clase:</label><select name="codigo_modulo" id="modulo" required></select></li>
-                <li><label for="video"> Link del vídeo:</label><input name="video" type="text" required></li>
-                <li><label for="duracion"> Tiempo estimado leccion:</label><input name="duracion" type="number" min="1" required> Minutos</li>
-                <li><label for="examen"> Link del examen:</label><input name="examen" type="text" required></li>
-                <li><label for="duracionEx"> Tiempo estimado examen:</label><input name="duracionEx" type="number" min="1" required> Minutos</li>
-                <li><label for="contenido"> Descripción:</label></li><br>
-                <li><textarea name="contenido" class="descripcion"></textarea></li>
+                <li><label for="nombre"> Título de la clase:</label><input id="nombre" name="nombre" type="text" required></li>
+                <li><label for="modulo"> Módulo de la clase:</label><select name="codigo_modulo" id="modulo" required></select></li>
+                <li><label for="video"> Link del vídeo:</label><input name="video" id="video" type="text" required></li>
+                <li><label for="duracion"> Tiempo estimado leccion:</label><input id="duracion" name="duracion" type="number" min="1" required> Minutos</li>
+                <li><label for="examen"> Link del examen:</label><input id="examen" name="examen" type="text" required></li>
+                <li><label for="duracionEx"> Tiempo estimado examen:</label><input id="duracionEx" name="duracionEx" type="number" min="1" required> Minutos</li>
+                <li><label for="contenido"> Descripción:</label></li>
+                <li><br><textarea id="contenido" name="contenido" class="descripcion"></textarea></li>
 
                 <li><input  class="buttonFormulario" type="submit"></li>
             </ul>

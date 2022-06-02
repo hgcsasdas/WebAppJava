@@ -55,6 +55,7 @@ if (isset($_POST) && !empty($_POST)) {
             option.appendChild(personalizeOption);
             modulos.appendChild(option);
         }
+        cambiaForm();
     }
 </script>
 <script class="sweetAlertFunctions">
@@ -77,6 +78,11 @@ if (isset($_POST) && !empty($_POST)) {
 
 </script>
 <script>
+    function cambiaForm(){
+        document.getElementById("rellenarDatos").action = '<?php $_SERVER ["PHP_SELF"]?>';
+
+    }
+
     function verificarDatos() {
 
         let formulario = document.formDatosPersonales;
@@ -143,7 +149,7 @@ if (isset($_POST) && !empty($_POST)) {
             <h1>Registrate gratis</h1>
             <p>Volver al inicio <a href="index.php">aqui</a></p>
         </div>
-        <form name="formDatosPersonales" action="<?PHP $_SERVER['PHP_SELF'] ?>" onsubmit="return verificarDatos();" method="post" enctype="application/x-www-form-urlencoded">
+        <form id="rellenarDatos" name="formDatosPersonales" action="#" onsubmit="return verificarDatos();" method="post" enctype="application/x-www-form-urlencoded">
             <label for="nombre">Nombre: </label><input name="nombre" id="nombre" type="text" maxlength="20" placeholder="Nombre">
             <label for="apellido">Apellido: </label><input name="apellido" id="apellido" type="text" maxlength="20" placeholder="Apellidos">
             <label for="nickname">Nickname: </label><input name="nickname" id="nickname" type="text" maxlength="20" placeholder="Nickname">

@@ -50,7 +50,8 @@ if(isset($_GET) && !empty($_GET)){
     try {
         $id = $_GET['id'];
         $datos = ($controller->leerEnDB("modules", $_GET));
-       echo "<script type='module'>llenarDatos(" . $id . " , " . $datos ." );</script>"; //Comprobar que la clase exista
+        echo $datos[$id];
+        echo '<div><script type="module">llenarDatos(' . $id . ' , ' . $datos .' );</script></div>'; //Comprobar que la clase exista
     } catch (Exception $e) {
         header("Location: cursos.php"); //redireccionar
         echo "Debe crear una clase primero";
@@ -61,16 +62,20 @@ if(isset($_GET) && !empty($_GET)){
 <script>
   var id = 0;  
   function cambiaForm(){
-        document.getElementById("rellenar").action = '<?php $_SERVER ["PHP_SELF"]?>';
+        document.getElementById("rellenarDatos").action = '<?php $_SERVER ["PHP_SELF"]?>';
 
     }
     
   function llenarDatos(id, clase){
+      //PROBLEMA
+         for(let i=0; i<clase.length;i++){
+          if(id===clase[i]["id_modulo"]){
+              var idClase = i;
+          }
+      }
 
-        let leccion = clase[id];
+        let leccion = clase[idClase];
         this.id = leccion['id_modulo'];
-        console.log(this.id);
-
         document.getElementById("titulo").value = leccion['titulo'];
         document.getElementById("foto").src = leccion['foto'];
         document.getElementById("resumen").value = leccion['resumen'];
@@ -142,7 +147,7 @@ if(isset($_GET) && !empty($_GET)){
 <section>
 
     <div class="container-formulario-anadir">
-        <form class="rellenar" action="" method="post" autocomplete="off" onsubmit="alert(examen.innerText)" enctype="multipart/form-data">
+        <form class="rellenar" id="rellenarDatos" action="" method="post" autocomplete="off" onsubmit="//alert(examen.innerText)" enctype="multipart/form-data">
             <ul class="listaFormulario">
                 <li><label for="titulo"> Título del curso:</label><input name="titulo" id="titulo" type="text" required></li>
                 <li><label for="foto"> Foto del curso:</label><input name="foto" id="foto" type="file" required></li>
