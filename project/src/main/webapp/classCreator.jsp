@@ -138,7 +138,7 @@ if(isset($_GET) && !empty($_GET)){
                 for (let i in identificadores) {
                     getValues += i + "=" + identificadores[i] + "&";
                 }
-                window.location.replace('eliminar.php?' + getValues);
+                window.location.replace('eliminar.jsp?' + getValues);
 
             }
         })

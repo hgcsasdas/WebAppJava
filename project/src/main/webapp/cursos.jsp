@@ -29,7 +29,7 @@ if (isset($_POST) && !empty($_POST)) {
     function mostrarModulos(cursos) {
         let modulos = "";
         for (let i = 0; i < cursos.length; i++) {
-            modulos += '<div class="item-cursos" ><div class="item-cursos-img"><a href="classAssetIntroduction.php?id=' + cursos[i]["id_modulo"] + '" ><img src="'+cursos[i]["foto"]+'" alt="'+cursos[i]["titulo"]+'"></a></div><div class="item-cursos-url"><a href="classAssetIntroduction.php?id=' + cursos[i]["id_modulo"] + '">' + cursos[i]["titulo"] + '</a></div></div>';
+            modulos += '<div class="item-cursos" ><div class="item-cursos-img"><a href="classAssetIntroduction.jsp?id=' + cursos[i]["id_modulo"] + '" ><img src="'+cursos[i]["foto"]+'" alt="'+cursos[i]["titulo"]+'"></a></div><div class="item-cursos-url"><a href="classAssetIntroduction.jsp?id=' + cursos[i]["id_modulo"] + '">' + cursos[i]["titulo"] + '</a></div></div>';
         }
         document.querySelector(".container-cursos").innerHTML = modulos;
     }
@@ -40,18 +40,18 @@ if (isset($_POST) && !empty($_POST)) {
 
         <div class="item-cursos" >
             <div class="item-cursos-img">
-                <a href="classAssetIntroduction.php?id=1" ><img src="Imgs/modulos/1bach.jpg" alt=""></a>
+                <a href="classAssetIntroduction.jsp?id=1" ><img src="Imgs/modulos/1bach.jpg" alt=""></a>
             </div>
             <div class="item-cursos-url">
-                <a href="classAssetIntroduction.php?id=1">1 bach mates ciencias</a>
+                <a href="classAssetIntroduction.jsp?id=1">1 bach mates ciencias</a>
             </div>
         </div>
         <div class="item-cursos">
             <div class="item-cursos-img">
-                <a href="classAssetIntroduction.php?id=2"><img src="Imgs/modulos/1bach.jpg" alt=""></a>
+                <a href="classAssetIntroduction.jsp?id=2"><img src="Imgs/modulos/1bach.jpg" alt=""></a>
             </div>
             <div class="item-cursos-url">
-                <a href="classAssetIntroduction.php?id=2">1 bach mates letras</a>
+                <a href="classAssetIntroduction.jsp?id=2">1 bach mates letras</a>
             </div>
         </div>
       

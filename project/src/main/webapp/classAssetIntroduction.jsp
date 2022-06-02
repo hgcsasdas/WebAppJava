@@ -40,7 +40,7 @@ if (isset($_GET) && !empty($_GET)){
         let numLecciones = document.getElementById('lecciones1');
         numLecciones.innerHTML = datos['leccion'];
         let resumenTema = document.getElementById('resumenTema');
-        resumenTema.setAttribute('href', "classAssetIntroduction.php?id="+datos['id_modulo']);
+        resumenTema.setAttribute('href', "classAssetIntroduction.jsp?id="+datos['id_modulo']);
         document.querySelector(".tituloModulo").innerHTML = datos['titulo'];
         document.querySelector("#resumen").innerHTML = "<p>"+datos['resumen']+"</p>";
     }
@@ -48,7 +48,7 @@ if (isset($_GET) && !empty($_GET)){
         let lecciones = document.querySelector(".listaLecciones");
         let leccion ="";
         for (let i =0; i<clases.length; i++) {
-            leccion += '<li><a href="#" class="menuClases" onclick="desplegarSubmenu2()">Leccion '+(i+1)+' <strong>'+(parseInt(clases[i]["cduracion"])+parseInt(clases[i]["eduracion"]))+' min</strong><i class="fa-solid fa-angle-down"></i></></a><ul class="desplegableClases"><li><a href="classAsset.php?id='+clases[i]["id_modulo"]+'&c='+clases[i]["codigo_clase"]+'">Estudia<strong>'+clases[i]["cduracion"]+' min</strong></a></li><li><a href="examAsset.php?id='+clases[i]["codigo_examen"]+'">Practica<strong>'+clases[i]["eduracion"]+' min</strong></a></li></ul></li>';
+            leccion += '<li><a href="#" class="menuClases" onclick="desplegarSubmenu2()">Leccion '+(i+1)+' <strong>'+(parseInt(clases[i]["cduracion"])+parseInt(clases[i]["eduracion"]))+' min</strong><i class="fa-solid fa-angle-down"></i></></a><ul class="desplegableClases"><li><a href="classAsset.jsp?id='+clases[i]["id_modulo"]+'&c='+clases[i]["codigo_clase"]+'">Estudia<strong>'+clases[i]["cduracion"]+' min</strong></a></li><li><a href="examAsset.jsp?id='+clases[i]["codigo_examen"]+'">Practica<strong>'+clases[i]["eduracion"]+' min</strong></a></li></ul></li>';
         }
         lecciones.innerHTML = leccion;
     }

@@ -9,7 +9,7 @@ if(isset($_GET) && !empty($_GET)){
        header("Location: cursos.php");
     } else {
         echo '<div><script type="module">failedRegister()</script></div>';
-       header("Location: classCreator.php?id=" . $_GET['id_modulo'] . "&c=" . $_GET['codigo_clase'], false);
+       header("Location: classCreator.jsp?id=" . $_GET['id_modulo'] . "&c=" . $_GET['codigo_clase'], false);
 
     }
 }

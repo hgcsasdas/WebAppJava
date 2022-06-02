@@ -6,17 +6,16 @@ class BdClasses extends Bd {
         parent::__construct();
     }
 
-    /*
     public function consultarClases($datos){
         $tabla = "classes";
 
         $codigoModulo = $datos['id'];
-        $sql  = 'select c.codigo_clase, m.id_modulo, upper(m.titulo) as titulo, c.nombre, m.resumen, (select count(*) from ' . $tabla . ' as c join modules m on c.codigo_modulo = '.$codigoModulo.' where c.codigo_modulo = m.id_modulo) as "numLecciones", c.duracion as cduracion, c.codigo_examen, e.duracion as eduracion, e.contenido as examenURL, c.video, c.contenido from ' . $tabla . ' as c join modules m on c.codigo_modulo = m.id_modulo join exam e on e.cod_examen = c.codigo_examen where codigo_modulo=' . $codigoModulo ;
+        $sql  = 'select m.id_modulo, upper(m.titulo) as titulo, c.nombre, m.resumen, (select count(*) from ' . $tabla . ' as c join modules m on c.codigo_modulo = '.$codigoModulo.' where c.codigo_modulo = m.id_modulo) as "numLecciones", c.duracion as cduracion, e.duracion as eduracion, e.contenido as examenURL, c.video, c.contenido from ' . $tabla . ' as c join modules m on c.codigo_modulo = m.id_modulo join exam e on e.cod_examen = c.codigo_examen where codigo_modulo=' . $codigoModulo ;
         $data = $this->conexion->query($sql);
         $dataarray = (mysqli_fetch_assoc($data));
-        return json_encode($dataarray);
+        return $dataarray;
     }
-*/
+
 
     public function listarClases($datos){
         $tabla = "classes";
@@ -32,20 +31,11 @@ class BdClasses extends Bd {
         return $lecciones;
 
     }
-
     public function buscarSiExisteClase($datos){
         $tabla = "classes";
         $codigoModulo = $datos['id_modulo'];
         $codigoClase = $datos['codigo_clase'];
         $sql  = 'select * from ' . $tabla . ' as c left join modules m on c.codigo_modulo = m.id_modulo where c.codigo_clase = ' . $codigoClase . ' and c.codigo_modulo = ' . $codigoModulo ;
-        $data = $this->conexion->query($sql);
-        return $data->num_rows;
-    }
-    public function buscarSiExisteModulo($datos){
-        $tabla = "modules";
-        $codigoModulo = $datos['id_modulo'];
-        $codigoClase = $datos['codigo_clase'];
-        $sql  = 'select * from ' . $tabla . '  where ' ;
         $data = $this->conexion->query($sql);
         return $data->num_rows;
     }
@@ -74,7 +64,7 @@ class BdClasses extends Bd {
                         try {
                             $urlFragmentos = explode("&", explode("=", $valor)[1]);
                             $valor = "https://www.youtube.com/embed/" . $urlFragmentos[0];
-                        } catch (TypeError $te) { //NO FUNCIONA
+                        } catch (TypeError $te) {
                             $valor = "https://www.youtube.com/embed/xoidoibP1Qs";
                         }
                     }
@@ -252,6 +242,7 @@ class BdClasses extends Bd {
             $resultado2 = $this->conexion->query($sql);
 
             $resultadoListado = $this->buscarSiExisteClase($datos);
+
             if ($resultado < 0 || $resultado2 < 0 || $resultadoListado == true) {
                 $registroExitoso = 0;
             } else {
@@ -263,30 +254,6 @@ class BdClasses extends Bd {
 
 
             }
-    function eliminarCursos($datos){
-
-        $resultadoListado = true;
-        $registroExitoso = 1;
-
-        $sql = "delete from classes where codigo_modulo = " . implode($datos);//. " and codigo_clase = " . $datos['codigo_clase'];
-        $resultado1 = $this->conexion->query($sql);
-        $sql = "delete from exam where cod_examen = " . implode($datos);
-        $resultado2 = $this->conexion->query($sql);
-        $sql = "delete from modules where id_modulo = " . implode($datos);
-        $resultado3 = $this->conexion->query($sql);
-
-        if ($resultado1 < 0 || $resultado2 < 0 || $resultado3 < 0 || $resultadoListado == true) {
-            $registroExitoso = 0;
-
-        } else {
-            $registroExitoso = 1;
-        }
-
-        return $registroExitoso;
-
-
-    }
-
 
 }
-
+?>
