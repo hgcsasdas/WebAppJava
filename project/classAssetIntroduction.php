@@ -1,15 +1,20 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!doctype html>
 <html lang="es">
 
+
+<%@include file="Includes/head.jsp" %>
+<%@include file="Includes/nav.jsp" %>
+<link rel="stylesheet" href="Css/claseStyle.css">
+
+<!--
 <?php
-include "Includes/head.php";
 include "Includes/nav.php";
-require "php/Modelo/Usuario.php";
-require "php/Modelo/classes.bd.php";
+require "php/modelo/Usuario.php";
+require "php/modelo/classes.bd.php";
 require "php/Controlador/Controller.php";
 ?>
 
-<link rel="stylesheet" href="Css/claseStyle.css">
 <?php
 if (isset($_GET) && !empty($_GET)){
 
@@ -28,7 +33,7 @@ if (isset($_GET) && !empty($_GET)){
 
 }
   ?>
-
+-->
 <script>
     function mostrarClase(datos){
         datos = datos[0];
@@ -54,7 +59,6 @@ if (isset($_GET) && !empty($_GET)){
     }
 */
 </script>
-<body>
 <main>
     <h1 class="tituloModulo"></h1>
     <aside class="claseContenido">
@@ -70,6 +74,7 @@ if (isset($_GET) && !empty($_GET)){
     </section>
 </main>
 
-<?php include "Includes/footer.php" ?>
+
+<%@include file="Includes/footer.jsp" %>
 </body>
 </html>

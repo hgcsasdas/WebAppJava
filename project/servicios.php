@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!doctype html>
 <html lang="es">
 <head>
@@ -9,6 +10,8 @@
     <script href="Js/script.js"></script>
     <title>INDOMATH | Servicios</title>
 </head>
+<%@include file="Includes/head.jsp" %>
+<%@include file="Includes/nav.jsp" %>
 <body>
 
 </body>

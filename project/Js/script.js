@@ -30,7 +30,7 @@ function cerrar(){
 }
 
 function setCookie() {
-    document.cookie = "Indomath=yes, domain=127.0.0.1";
+    document.cookie = "domain=Indomath.es";
 }
 
 function checkCookie() {

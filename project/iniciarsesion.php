@@ -1,9 +1,10 @@
+<!---
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
 
 <?php
-require "php/Modelo/Usuario.php";
-require "php/Modelo/users.bd.php";
+require "php/modelo/Usuario.php";
+require "php/modelo/users.bd.php";
 require "php/Controlador/Controller.php";
 ?>
 <?php
@@ -24,9 +25,12 @@ if($controlador->verificarCaptcha($_POST['h-captcha-response'])) {
 }
 
 ?>
+-->
 
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="es">
-<?php include "Includes/head.php"?>
+<%@include file="Includes/head.jsp" %>
+<%@include file="Includes/nav.jsp" %>
 <script>
     function verificarDatos() {
 
@@ -103,12 +107,12 @@ if($controlador->verificarCaptcha($_POST['h-captcha-response'])) {
     </div>
     <div class="tituloRegis">
         <h1>Inicia sesión</h1>
-        <p>Volver al inicio <a href="index.php">aqui</a></p>
+        <p>Volver al inicio <a href="index.jsp">aqui</a></p>
     </div>
 
     <div class="formulario">
 
-        <form name="formDatosPersonales" action="#" target="" onsubmit="return verificarDatos();" method="post" enctype="application/x-www-form-urlencoded">
+        <form name="formDatosPersonales" action="CrearSession" target="" onsubmit="return verificarDatos();" method="post" enctype="application/x-www-form-urlencoded">
 
             <label for="mail">Correo electrónico: </label><input name="mail" id="mail" required type="email" placeholder="Mail">
             <label for="contrasena">Contraseña: </label><input name="contrasena" id="contrasena" required type="password" minlength="8" placeholder="Contraseña">
@@ -119,11 +123,11 @@ if($controlador->verificarCaptcha($_POST['h-captcha-response'])) {
         </form>
     </div>
     <div class="textoRegis">
-        <p>¿No tienes cuenta? <a class="iniEnlace" href="registrar.php">Registrarse</a></p>
+        <p>¿No tienes cuenta? <a class="iniEnlace" href="registrar.jsp">Registrarse</a></p>
     </div>
 
 </div>
 
-<?php include "Includes/footer.php"?>
+<%@include file="Includes/footer.jsp" %>
 </body>
 </html>

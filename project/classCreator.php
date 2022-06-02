@@ -1,18 +1,21 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!doctype html>
 <html lang="es">
 <link rel="stylesheet" href="Css/crearClase.css">
 <script src="https://cdn.tiny.cloud/1/xdvnk6dzaz519bjr5uc1teocywbt1optp7hlrn0rodbhump8/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+
+<%@include file="Includes/head.jsp" %>
+<%@include file="Includes/nav.jsp" %>
+<!--
 <?php
-include "Includes/head.php";
-include "Includes/nav.php";
-require "php/Modelo/Usuario.php";
-require "php/Modelo/classes.bd.php";
+require "php/modelo/Usuario.php";
+require "php/modelo/classes.bd.php";
 require "php/Controlador/Controller.php";
 ?>
 <?php
-
+//poner modulos en mayusculas
 $controller = new controller();
 
 $modulos =  $controller->leerEnDB("modules", "");
@@ -44,12 +47,13 @@ if(isset($_GET) && !empty($_GET)){
 
         echo "<script type='module'>llenarDatos(" . $_GET['c'] . ", " . $datos . ");</script>"; //Comprobar que la clase exista
     } catch (Exception $e) {
-        header("Location: cursos.php"); //redireccionar
+        header("Location: modulos.php"); //redireccionar
         echo "Debe crear una clase primero";
     }
 }
 
 ?>
+-->
 <body>
 <script>
     let identificadores = [];
@@ -57,7 +61,7 @@ if(isset($_GET) && !empty($_GET)){
 
         let indiceClase = 0;
         for (let i = 0; i < clase.length; i++) {
-            if (clase[i]['codigo_clase'] === id) {
+            if (clase[i]['codigo_clase'] == id) {
                 indiceClase = i;
             }
         }
@@ -67,26 +71,28 @@ if(isset($_GET) && !empty($_GET)){
 
         for (let i in leccion) {
             leccionArray.push(leccion[i]);
-            if (i === 'id_modulo') {
+            if (i == 'id_modulo') {
                 identificadores['id_modulo']=leccion[i];
-            } else if (i === 'codigo_clase') {
+            } else if (i == 'codigo_clase') {
                 identificadores['codigo_clase']=leccion[i];
-            } else if (i === 'codigo_examen') {
+            } else if (i == 'codigo_examen') {
                 identificadores['codigo_examen']=leccion[i];
             }
+
+
         }
 
         let campos = document.getElementsByTagName("input");
         let modulo = document.getElementsByTagName("select");
         let desc = document.getElementsByTagName("textarea")
 
-        campos[0].value = leccionArray[3];
-        modulo[0].value = leccionArray[1];
-        campos[1].value = leccionArray[10];
-        campos[2].value = leccionArray[5];
-        campos[3].value = leccionArray[9];
-        campos[4].value = leccionArray[8];
-        desc[0].value = leccionArray[11];
+        campos[0].value =leccionArray[3];
+        modulo[0].value =leccionArray[1];
+        campos[1].value =leccionArray[10];
+        campos[2].value =leccionArray[5];
+        campos[3].value =leccionArray[9];
+        campos[4].value =leccionArray[8];
+        desc[0].value =leccionArray[11];
 
         let eliminarLista = document.createElement("li");
         let eliminarOption = document.createElement("a");
@@ -154,7 +160,8 @@ if(isset($_GET) && !empty($_GET)){
 </script>
 <script class="mostrarModulos">
     function cambiaForm(){
-        document.getElementById("rellenarDatos").action = '<?php $_SERVER ["PHP_SELF"]?>';
+        document.getElementById("rellenar").action = '<?php $_SERVER ["PHP_SELF"]?>';
+
     }
     //import {mostrarModulos} from "./js/mostrarModulos.js"; intentar en otros modulos
     //mostrarModulos();
@@ -181,17 +188,17 @@ if(isset($_GET) && !empty($_GET)){
 <section>
 
     <div class="container-formulario-anadir">
-        <form id="rellenarDatos" class="rellenar" action="#"  method="post" autocomplete="off">
+        <form class="rellenar" action=""  method="post" autocomplete="off">
             <ul class="listaFormulario">
                 <!---<input type="hidden" value="" name="id">-->
-                <li><label for="nombre"> Título de la clase:</label><input id="nombre" name="nombre" type="text" required></li>
-                <li><label for="modulo"> Módulo de la clase:</label><select name="codigo_modulo" id="modulo" required></select></li>
-                <li><label for="video"> Link del vídeo:</label><input name="video" id="video" type="text" required></li>
-                <li><label for="duracion"> Tiempo estimado leccion:</label><input id="duracion" name="duracion" type="number" min="1" required> Minutos</li>
-                <li><label for="examen"> Link del examen:</label><input id="examen" name="examen" type="text" required></li>
-                <li><label for="duracionEx"> Tiempo estimado examen:</label><input id="duracionEx" name="duracionEx" type="number" min="1" required> Minutos</li>
-                <li><label for="contenido"> Descripción:</label></li>
-                <li><br><textarea id="contenido" name="contenido" class="descripcion"></textarea></li>
+                <li><label for="nombre"> Título de la clase:</label><input name="nombre" type="text" required></li>
+                <li><label for="codigo_modulo"> Módulo de la clase:</label><select name="codigo_modulo" id="modulo" required></select></li>
+                <li><label for="video"> Link del vídeo:</label><input name="video" type="text" required></li>
+                <li><label for="duracion"> Tiempo estimado leccion:</label><input name="duracion" type="number" min="1" required> Minutos</li>
+                <li><label for="examen"> Link del examen:</label><input name="examen" type="text" required></li>
+                <li><label for="duracionEx"> Tiempo estimado examen:</label><input name="duracionEx" type="number" min="1" required> Minutos</li>
+                <li><label for="contenido"> Descripción:</label></li><br>
+                <li><textarea name="contenido" class="descripcion"></textarea></li>
 
                 <li><input  class="buttonFormulario" type="submit"></li>
             </ul>
@@ -200,7 +207,8 @@ if(isset($_GET) && !empty($_GET)){
     </div>
 
 </section>
-<?php include "Includes/footer.php"?>
+
+<%@include file="Includes/footer.jsp" %>
 
 </body>
 </html>

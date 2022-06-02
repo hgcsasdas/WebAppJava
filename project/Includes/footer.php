@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <footer>
     <!-- Footer main -->
     <div class="ft-main">
@@ -17,7 +18,7 @@
         <div class="ft-social">
             <ul class="ft-social-list">
 
-                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                <li><a href="https://www.instagram.com/indomath_clases/"><i class="fab fa-instagram"></i></a></li>
                 <li><a href="#"><i class="fa-brands fa-twitch"></i></a></li>
                 <li><a href="#"><i class="fab fa-youtube"></i></a></li>
                 <li><a href="#"><i class="fa-solid fa-envelope"></i></a></li>
@@ -29,7 +30,7 @@
         <!-- Footer legal -->
         <div class="ft-legal">
             <ul class="ft-legal-list">
-                <li><a href="terminosYCondiciones.php">Política de privacidad</a></li>
+                <li><a href="terminosYCondiciones.jsp">Política de privacidad</a></li>
                 <li>&copy; 2022 Indomath Inc.</li>
             </ul>
         </div>

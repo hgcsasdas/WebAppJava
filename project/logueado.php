@@ -1,4 +1,4 @@
-
+<!--
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script class="sweetAlertFunctions">
     function correctLogin(){
@@ -20,17 +20,20 @@
 
 </script>
 <?php
-require "php/Modelo/Usuario.php";
-require "php/Modelo/users.bd.php";
+require "php/modelo/Usuario.php";
+require "php/modelo/users.bd.php";
 
 if(isset($_POST) && !empty($_POST)) {
     session_start();
     echo session_id();
 }
 ?>
-
+-->
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="es">
-<?php include "Includes/head.php"?>
+
+<%@include file="Includes/head.jsp" %>
+<%@include file="Includes/nav.jsp" %>
 <script>
     function verificarDatos(){
         validarVacio();
@@ -67,7 +70,7 @@ if(isset($_POST) && !empty($_POST)) {
 
 </script>
     <body>
-    <?php include "Includes/nav.php"?>
+   <!-- <?php include "Includes/nav.php"?>
 
     <?php
 
@@ -80,7 +83,8 @@ if(isset($_POST) && !empty($_POST)) {
     }
 
 ?>
+-->
 
-
+    <%@include file="Includes/footer.jsp" %>
 </body>
 </html>

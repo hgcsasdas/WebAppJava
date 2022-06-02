@@ -1,11 +1,13 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!doctype html>
 <html lang="es">
 
+<%@include file="Includes/head.jsp" %>
+<%@include file="Includes/nav.jsp" %>
+<!--
 <?php
-include "Includes/head.php";
-include "Includes/nav.php";
-require "php/Modelo/Usuario.php";
-require "php/Modelo/classes.bd.php";
+require "php/modelo/Usuario.php";
+require "php/modelo/classes.bd.php";
 require "php/Controlador/Controller.php";
 ?>
 
@@ -38,7 +40,7 @@ if (isset($_GET) && !empty($_GET)){
 */
 }
 ?>
-
+-->
 <script>
     function imprimirClases(clases){
        // console.log(clases);
@@ -69,7 +71,6 @@ if (isset($_GET) && !empty($_GET)){
 
     }
 </script>
-<body>
 <main>
     <h5 class="tituloModulo"><?php //$tituloModulo ?></h5>
     <h1 class="tituloClase"><?php //$tituloClase ?></h1>
@@ -87,6 +88,7 @@ if (isset($_GET) && !empty($_GET)){
     </section>
 </main>
 
-<?php include "Includes/footer.php" ?>
+
+<%@include file="Includes/footer.jsp" %>
 </body>
 </html>

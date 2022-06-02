@@ -1,9 +1,9 @@
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
-
+<!--
 <?php
-require "php/Modelo/Usuario.php";
-require "php/Modelo/users.bd.php";
+require "php/modelo/Usuario.php";
+require "php/modelo/users.bd.php";
 require "php/Controlador/Controller.php";
 
 ?>
@@ -16,25 +16,28 @@ echo "<script type='module'>mostrarModulos($modulos)</script>";
 ?>
 <?php
 if (isset($_POST) && !empty($_POST)) {
-    $user = new Usuario();
-    $controlador = new Controller();
-    if ($controlador->verificarCaptcha($_POST['h-captcha-response'])) {
-        if ($controlador->guardarEnDB("users",$_POST)) {
+$user = new Usuario();
+$controlador = new Controller();
+if ($controlador->verificarCaptcha($_POST['h-captcha-response'])) {
+if ($controlador->guardarEnDB("users",$_POST)) {
 
-            echo '<div><script type="module">correctRegister()</script></div>';
-        } else {
-            echo '<div><script type="module">failedRegister()</script></div>';
-        }
-    } else {
-        echo '<script type="module">errorCaptchaImpresion()</script>';
+echo '<div><script type="module">correctRegister()</script></div>';
+} else {
+echo '<div><script type="module">failedRegister()</script></div>';
+}
+} else {
+echo '<script type="module">errorCaptchaImpresion()</script>';
 
-    }
+}
 }
 
 ?>
+-->
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!doctype html>
 <html lang="es">
-<?php include "Includes/head.php" ?>
+<%@include file="Includes/head.jsp" %>
+<%@include file="Includes/nav.jsp" %>
 <script class="mostrarModulos">
     //import {mostrarModulos} from "./js/mostrarModulos.js"; intentar en otros modulos
     //mostrarModulos();
@@ -55,7 +58,6 @@ if (isset($_POST) && !empty($_POST)) {
             option.appendChild(personalizeOption);
             modulos.appendChild(option);
         }
-        cambiaForm();
     }
 </script>
 <script class="sweetAlertFunctions">
@@ -78,11 +80,6 @@ if (isset($_POST) && !empty($_POST)) {
 
 </script>
 <script>
-    function cambiaForm(){
-        document.getElementById("rellenarDatos").action = '<?php $_SERVER ["PHP_SELF"]?>';
-
-    }
-
     function verificarDatos() {
 
         let formulario = document.formDatosPersonales;
@@ -134,12 +131,7 @@ if (isset($_POST) && !empty($_POST)) {
     }
 
 </script>
-<!doctype html>
-<html lang="es">
-<?php include "Includes/head.php" ?>
 <body>
-<?php include "Includes/nav.php" ?>
-
 <section>
     <div class="contenedor">
         <div class="logoIni">
@@ -147,9 +139,9 @@ if (isset($_POST) && !empty($_POST)) {
         </div>
         <div class="tituloRegis">
             <h1>Registrate gratis</h1>
-            <p>Volver al inicio <a href="index.php">aqui</a></p>
+            <p>Volver al inicio <a href="index.jsp">aqui</a></p>
         </div>
-        <form id="rellenarDatos" name="formDatosPersonales" action="#" onsubmit="return verificarDatos();" method="post" enctype="application/x-www-form-urlencoded">
+        <form name="formDatosPersonales" action="<?PHP $_SERVER['PHP_SELF'] ?>" onsubmit="return verificarDatos();" method="post" enctype="application/x-www-form-urlencoded">
             <label for="nombre">Nombre: </label><input name="nombre" id="nombre" type="text" maxlength="20" placeholder="Nombre">
             <label for="apellido">Apellido: </label><input name="apellido" id="apellido" type="text" maxlength="20" placeholder="Apellidos">
             <label for="nickname">Nickname: </label><input name="nickname" id="nickname" type="text" maxlength="20" placeholder="Nickname">
@@ -164,10 +156,11 @@ if (isset($_POST) && !empty($_POST)) {
         </form>
 
         <div class="textoRegis">
-            <p>¿Tienes ya cuenta? <a class="iniEnlace" href="iniciarsesion.php">Iniciar sesion</a></p>
+            <p>¿Tienes ya cuenta? <a class="iniEnlace" href="iniciarsesion.jsp">Iniciar sesion</a></p>
         </div>
     </div>
 </section>
-<?php include "Includes/footer.php" ?>
+
+<%@include file="Includes/footer.jsp" %>
 </body>
 </html>

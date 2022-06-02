@@ -1,8 +1,9 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!doctype html>
 <html lang="es">
-<?php include "Includes/head.php"?>
+<%@include file="Includes/head.jsp" %>
+<%@include file="Includes/nav.jsp" %>
 <body onload="checkCookie()">
-<?php include "Includes/nav.php"?>
 <section class="body">
     <div class="img-slider">
         <div class="slide active">
@@ -108,7 +109,7 @@
                 <p> Esta web utiliza cookies propias y de terceros para mejorar tu experiencia de navegación.
                     Al utilizar nuestra web, aceptas que podemos almacenar y utilizar tus datos personales para
                     mejorar nuestros servicios y para que puedas acceder a contenido más personalizado.
-                    Si continua utilizando la página estará aceptando la política e privacidad de esta. <br><a href="terminosYCondiciones.php">Pulse aquí para verlos.</a></p>
+                    Si continua utilizando la página estará aceptando la política e privacidad de esta. <br><a href="terminosYCondiciones.jsp">Pulse aquí para verlos.</a></p>
                 <div class="boton-popup">
                     <a href="#" onclick="cerrar()">Cerrar </a>
                 </div>
@@ -116,7 +117,8 @@
         </div>
 
 
-<?php include "Includes/footer.php"?>
+
+<%@include file="Includes/footer.jsp" %>
 
 </body>
 </html>

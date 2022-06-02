@@ -1,8 +1,11 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="es">
-<?php include "Includes/head.php"?>
+
+<%@include file="Includes/head.jsp" %>
+<%@include file="Includes/nav.jsp" %>
 
 <body>
-<?php include "Includes/nav.php"?>
+
 <div class="contender">
     <div class="yt">
         <div class="izq">
@@ -33,6 +36,7 @@
 
 </div>
 
-<?php include "Includes/footer.php"?>
+
+<%@include file="Includes/footer.jsp" %>
 </body>
 </html>

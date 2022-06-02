@@ -122,7 +122,6 @@ i:hover {
  }
 /*Footer*/
 footer {
-    z-index: -1;
     background-color: #555555;
     color: #bbb;
     line-height: 1.5;
