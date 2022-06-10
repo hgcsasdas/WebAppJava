@@ -2,7 +2,8 @@
 <!doctype html>
 <html lang="es">
 <link rel="stylesheet" href="Css/crearClase.css">
-<script src="https://cdn.tiny.cloud/1/xdvnk6dzaz519bjr5uc1teocywbt1optp7hlrn0rodbhump8/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script src="https://cdn.tiny.cloud/1/xdvnk6dzaz519bjr5uc1teocywbt1optp7hlrn0rodbhump8/tinymce/5/tinymce.min.js"
+        referrerpolicy="origin"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <%@include file="Includes/head.jsp" %>
@@ -63,19 +64,20 @@ if(isset($_GET) && !empty($_GET)){
 ?>
 -->
 <script>
-  var id = 0;
-  function cambiaForm(){
+    var id = 0;
+
+    function cambiaForm() {
         document.getElementById("rellenarDatos").action = 'CrearCurso';
 
     }
 
-  function llenarDatos(id, clase){
-      //PROBLEMA
-         for(let i=0; i<clase.length;i++){
-          if(id===clase[i]["id_modulo"]){
-              var idClase = i;
-          }
-      }
+    function llenarDatos(id, clase) {
+        //PROBLEMA
+        for (let i = 0; i < clase.length; i++) {
+            if (id === clase[i]["id_modulo"]) {
+                var idClase = i;
+            }
+        }
 
         let leccion = clase[idClase];
         this.id = leccion['id_modulo'];
@@ -112,7 +114,7 @@ if(isset($_GET) && !empty($_GET)){
         })
     }
 
-  </script>
+</script>
 <script class="sweetAlertFunctions">
     function correctRegister() {
         Swal.fire({
@@ -142,7 +144,7 @@ if(isset($_GET) && !empty($_GET)){
         statusbar: false,
         browser_spellcheck: true,
         contextmenu: false,
-        menubar:false,
+        menubar: false,
 
     });
 </script>
@@ -150,14 +152,17 @@ if(isset($_GET) && !empty($_GET)){
 <section>
 
     <div class="container-formulario-anadir">
-        <form class="rellenar" id="rellenarDatos" action="" method="post" autocomplete="off" onsubmit="//alert(examen.innerText)" enctype="multipart/form-data">
+        <form class="rellenar" id="rellenarDatos" action="../java/servlets/CrearCurso.java" method="post" autocomplete="off"
+              onsubmit="//alert(examen.innerText)" enctype="multipart/form-data">
             <ul class="listaFormulario">
-                <li><label for="titulo"> Título del curso:</label><input name="titulo" id="titulo" type="text" required></li>
+                <li><label for="titulo"> Título del curso:</label><input name="titulo" id="titulo" type="text" required>
+                </li>
                 <li><label for="foto"> Foto del curso:</label><input name="foto" id="foto" type="file" required></li>
-                <li><label for="resumen"> Resumen:</label></li><br>
+                <li><label for="resumen"> Resumen:</label></li>
+                <br>
                 <li><textarea name="resumen" id="resumen" class="descripcion"></textarea></li>
 
-                <li><input  class="buttonFormulario" type="submit"></li>
+                <li><input class="buttonFormulario" type="submit"></li>
             </ul>
 
         </form>
