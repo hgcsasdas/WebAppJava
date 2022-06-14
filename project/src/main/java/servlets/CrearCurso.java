@@ -2,6 +2,7 @@ package servlets;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.nio.file.Files;
@@ -10,6 +11,7 @@ import java.nio.file.Paths;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
+import modelo.Curso;
 
 
 @WebServlet(name = "CrearCurso", value = "/CrearCurso")
@@ -47,7 +49,7 @@ public class CrearCurso extends HttpServlet {
             File file = new File(uploads, fileName);
             //obtengo la ruta para la bd
             ruta = file.getAbsolutePath();
-            System.out.println("La ruta de la foto es: " + ruta);
+            //System.out.println("La ruta de la foto es: " + ruta);
             //Copio la foto
             try {
                 Files.copy(input, file.toPath());
@@ -58,14 +60,26 @@ public class CrearCurso extends HttpServlet {
                 respuesta.print("Error al copiar la foto");
                 System.out.println("Error al copiar la foto");
             }
+
         }
 
+        //Creo un objeto curso
 
+        Curso curso = new Curso(titulo, fileName, resumen);
+
+        try{
+            curso.insertar();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+/*
         PrintWriter out = response.getWriter();
         out.println("<html><body>");
         out.println("<h1>" + titulo + "</h1>");
-        out.println("<h1>" + fileName + "</h1>");
+        //out.println("<h1>" + curso.getnFoto() + curso.getResumen()+ curso.getTitulo() + "</h1>");
+        out.println("<img src='" + pathFiles + fileName + "'>");
         out.println("<h1>" + resumen + "</h1>");
         out.println("</body></html>");
+*/
     }
 }
