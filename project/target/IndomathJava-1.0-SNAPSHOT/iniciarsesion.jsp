@@ -25,16 +25,13 @@ if($controlador->verificarCaptcha($_POST['h-captcha-response'])) {
 
 ?>
 -->
+
+<html lang="es">
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
-
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html lang="es">
 <%@include file="Includes/head.jsp" %>
 <%@include file="Includes/nav.jsp" %>
-
-<html lang="es">
-<?php include "Includes/head.php"?>
 <script>
     function cambiaForm(){
         document.getElementById("rellenarDatos").action = 'IniciarSesion';
@@ -124,7 +121,7 @@ if($controlador->verificarCaptcha($_POST['h-captcha-response'])) {
             <label for="mail">Correo electrónico: </label><input name="mail" id="mail" required type="email" placeholder="Mail">
             <label for="contrasena">Contraseña: </label><input name="contrasena" id="contrasena" required type="password" minlength="8" placeholder="Contraseña">
             <div id="errorCaptcha"></div>
-            <div class="h-captcha" id="captcha" data-sitekey="eb2c600f-ee5c-40b1-a0cb-26e2a0c4da53" ></div>
+            <div class="h-captcha" id="captcha" data-sitekey="eb2c600f-ee5c-40b1-a0cb-26e2a0c4da53"></div>
             <input type="submit" value="Enviar datos"/>
 
         </form>

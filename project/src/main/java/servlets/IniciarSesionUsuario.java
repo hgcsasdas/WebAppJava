@@ -21,7 +21,7 @@ public class IniciarSesionUsuario extends HttpServlet {
         String contrasena = request.getParameter("contrasena");
         String hcaptchaResponse = request.getParameter("h-captcha-response");
         System.out.println(hcaptchaResponse);
-        boolean verificado = verificarReKaptcha.verificar(hcaptchaResponse);
+        //boolean verificado = verificarReKaptcha.verificar(hcaptchaResponse);
 
         PrintWriter out = response.getWriter();
         out.println("<html><body>");
